@@ -1,0 +1,29 @@
+<div>
+    <form [formGroup]="postForm" (ngSubmit)="savePost()">
+        <table>
+            <tbody>
+                <tr>
+                    <td>
+                        <label for="">Comment</label>
+                    </td>
+                    <td>
+                        <input class="m-3 form-control" type="text" name="" id="" formControlName="comment">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="">Picture</label>
+                    </td>
+                    <td>
+                        <input class="m-3 form-control" type="file" name="picture" accept="image/*" formControlName="picture">
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2" class="text-center">
+                        <button class="btn btn-outline-primary" type="submit" [disabled]="postForm.invalid">Submit</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </form>
+</div>
