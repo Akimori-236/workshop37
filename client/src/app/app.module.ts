@@ -6,19 +6,24 @@ import { AppComponent } from './app.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { PostformComponent } from './components/postform.component';
 import { PostresultComponent } from './components/postresult.component';
+import { HttpClientModule } from '@angular/common/http';
+import { HttpService } from './services/http.service';
 
 @NgModule({
   declarations: [
     AppComponent,
     PostformComponent,
-    PostresultComponent
+    PostresultComponent,
+
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule,
+
   ],
-  providers: [],
+  providers: [HttpService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
