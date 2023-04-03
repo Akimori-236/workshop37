@@ -30,7 +30,7 @@ export class PostformComponent {
   savePost() {
     const commentData = this.postForm.value['comment'];
     // send it
-    lastValueFrom(this.http.postComment(commentData, this.selectedFile, this.selectedFile.name))
+    lastValueFrom(this.http.postComment(commentData, this.selectedFile))
       .then(
         (response) => { console.debug(response) }
       )

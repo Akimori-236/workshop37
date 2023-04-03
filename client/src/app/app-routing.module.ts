@@ -5,7 +5,7 @@ import { PostresultComponent } from './components/postresult.component';
 
 const routes: Routes = [
   { path: '', component: PostformComponent },
-  { path: 'result', component: PostresultComponent },
+  { path: 'results', component: PostresultComponent },
   { path: '**', redirectTo: '/', pathMatch: 'full' },
 ];
 

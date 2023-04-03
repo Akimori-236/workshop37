@@ -1,1 +1,6 @@
-<p>postresult works!</p>
+<div>
+    <form [formGroup]="postIDForm" (ngSubmit)="search()">
+        <input class="form-control" type="text" placeholder="enter postID">
+        <button class="btn btn-outline-danger" type="submit">Get Post</button>
+    </form>
+</div>
