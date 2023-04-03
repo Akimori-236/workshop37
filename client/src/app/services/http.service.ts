@@ -12,10 +12,16 @@ export class HttpService {
 
   constructor(private http: HttpClient) { }
 
-  //response {"imageKey": "myobjects/ad361820.jpg"}
-  postComment(commentData: Comment): Observable<any> {
-    return this.http.post(POST_URL, commentData)
-      .pipe()
+  //response {"commentId": "ad361820"}
+  postComment(commentData: Comment, file: Blob, filename: string): Observable<any> {
+    // MAKE THE MULTIPART FORM DATA
+    const formData = new FormData();
+    formData.append('comment', JSON.stringify(commentData));
+    formData.append('imgFile', file, filename);
+
+    return this.http.post(POST_URL, formData)
+      .pipe();
   }
+
 
 }

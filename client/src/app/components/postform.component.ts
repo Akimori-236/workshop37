@@ -9,22 +9,34 @@ import { lastValueFrom } from 'rxjs';
   styleUrls: ['./postform.component.css']
 })
 export class PostformComponent {
+  postForm!: FormGroup
+  selectedFile!: File;
 
   constructor(private fb: FormBuilder,
     private http: HttpService) { }
 
-  postForm!: FormGroup
-
   ngOnInit(): void {
     this.postForm = this.fb.group({
       comment: this.fb.control<string>('', [Validators.required]),
-      picture: this.fb.control<Blob>(new Blob)
-    })
+      picture: this.fb.control<Blob | null>(null)
+    });
+  }
+
+  onFileSelected(event: any) {
+    // collect selected file
+    this.selectedFile = event.target.files[0] as File
   }
 
   savePost() {
-    const values = this.postForm.value
-    const response = lastValueFrom(this.http.postComment(values))
-    console.debug(response)
+    const commentData = this.postForm.value['comment'];
+    // send it
+    lastValueFrom(this.http.postComment(commentData, this.selectedFile, this.selectedFile.name))
+      .then(
+        (response) => { console.debug(response) }
+      )
+      .catch(
+        (error) => { console.warn(error) }
+      );
   }
 }
+

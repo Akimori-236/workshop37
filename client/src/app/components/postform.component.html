@@ -21,13 +21,13 @@
             <label for="">Picture</label>
           </td>
           <td>
-            <input
+            <input #imageInput
               class="m-3 form-control"
               type="file"
               name="picture"
               accept="image/*"
+              (change)="onFileSelected($event)"
               formControlName="picture"
-              #file
             />
           </td>
         </tr>
